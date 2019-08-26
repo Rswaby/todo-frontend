@@ -7,9 +7,9 @@ import * as ROLES from '../../constants/roles';
 
 const style = {
   link: {
-    "text-decoration": "none",
+    "textDecoration": "none",
     "color": "black",
-    "text-align": "center",
+    "textAlign": "center",
   }
 }
 const Navigation = () => (
