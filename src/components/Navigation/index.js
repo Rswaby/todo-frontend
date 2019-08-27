@@ -8,7 +8,7 @@ import * as ROLES from '../../constants/roles';
 const style = {
   link: {
     "textDecoration": "none",
-    "color": "black",
+    "color": "white",
     "textAlign": "center",
   }
 }
@@ -25,7 +25,7 @@ const Navigation = () => (
 );
 
 const NavigationAuth = ({ authUser }) => (
-  <div id={"nav-bar"} className={"nav justify-content-end"}>
+  <div className={" blue-bar navbar navbar-default navbar-light justify-content-end"}>
     <div id={"nav-bar-item"}>
       <Link style={style.link} to={ROUTES.HOME}>HOME</Link>
     </div>
@@ -44,7 +44,7 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-  <nav id={"nav-bar"} className={"navbar navbar-light bg-light justify-content-end"}>
+  <nav className={"navbar navbar-light  justify-content-end"}>
     <div id={"nav-bar-item"} className={"nav-item"}>
       <Link style={style.link} to={ROUTES.LANDING}>LANDING</Link>
     </div>
