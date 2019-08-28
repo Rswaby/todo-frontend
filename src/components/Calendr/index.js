@@ -8,7 +8,7 @@ export default class Calendr extends Component {
         console.log(moment().format('LLL'))
         return (
             <div>
-            date
+                date
             </div>
         )
     }

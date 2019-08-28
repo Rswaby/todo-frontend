@@ -18,22 +18,24 @@ const SIGN_IN_METHODS = [
   {
     id: 'google.com',
     provider: 'googleProvider',
+    css:'fa fa-google'
   },
   {
     id: 'facebook.com',
     provider: 'facebookProvider',
+    css:'fa fa-facebook'
   },
   {
     id: 'twitter.com',
     provider: 'twitterProvider',
+    css:'fa fa-twitter'
   },
 ];
 
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <div>
-        <h1>Account: {authUser.email}</h1>
+      <div className={"col-md-12"}>
         <PasswordForgetForm />
         <PasswordChangeForm />
         <LoginManagement authUser={authUser} />
@@ -96,8 +98,7 @@ class LoginManagementBase extends Component {
 
     return (
       <div>
-        Sign In Methods:
-        <ul>
+        <div>
           {SIGN_IN_METHODS.map(signInMethod => {
             const onlyOneLeft = activeSignInMethods.length === 1;
             const isEnabled = activeSignInMethods.includes(
@@ -105,7 +106,7 @@ class LoginManagementBase extends Component {
             );
 
             return (
-              <li key={signInMethod.id}>
+              <div className={"m-top-5 centr"} key={signInMethod.id}>
                 {signInMethod.id === 'password' ? (
                   <DefaultLoginToggle
                     onlyOneLeft={onlyOneLeft}
@@ -115,18 +116,18 @@ class LoginManagementBase extends Component {
                     onUnlink={this.onUnlink}
                   />
                 ) : (
-                  <SocialLoginToggle
-                    onlyOneLeft={onlyOneLeft}
-                    isEnabled={isEnabled}
-                    signInMethod={signInMethod}
-                    onLink={this.onSocialLoginLink}
-                    onUnlink={this.onUnlink}
-                  />
-                )}
-              </li>
+                    <SocialLoginToggle
+                      onlyOneLeft={onlyOneLeft}
+                      isEnabled={isEnabled}
+                      signInMethod={signInMethod}
+                      onLink={this.onSocialLoginLink}
+                      onUnlink={this.onUnlink}
+                    />
+                  )}
+              </div>
             );
           })}
-        </ul>
+        </div>
         {error && error.message}
       </div>
     );
@@ -143,19 +144,21 @@ const SocialLoginToggle = ({
   isEnabled ? (
     <button
       type="button"
+      className={"btn btn-default col-md-3 todo-btn"}
       onClick={() => onUnlink(signInMethod.id)}
       disabled={onlyOneLeft}
     >
       Deactivate {signInMethod.id}
     </button>
   ) : (
-    <button
-      type="button"
-      onClick={() => onLink(signInMethod.provider)}
-    >
-      Link {signInMethod.id}
-    </button>
-  );
+      <button
+        type="button"
+        className={"btn btn-default col-md-3 todo-btn"}
+        onClick={() => onLink(signInMethod.provider)}
+      >
+        Link {signInMethod.id}
+      </button>
+    );
 
 class DefaultLoginToggle extends Component {
   constructor(props) {
@@ -192,32 +195,33 @@ class DefaultLoginToggle extends Component {
       <button
         type="button"
         onClick={() => onUnlink(signInMethod.id)}
+        className={"btn btn-default col-md-3 todo-btn"}
         disabled={onlyOneLeft}
       >
         Deactivate {signInMethod.id}
       </button>
     ) : (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
-        />
+        <form onSubmit={this.onSubmit}>
+          <input
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="New Password"
+          />
+          <input
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Confirm New Password"
+          />
 
-        <button disabled={isInvalid} type="submit">
-          Link {signInMethod.id}
-        </button>
-      </form>
-    );
+          <button disabled={isInvalid} className={"btn btn-default col-md-3 todo-btn"} type="submit">
+            Link {signInMethod.id}
+          </button>
+        </form>
+      );
   }
 }
 
