@@ -9,7 +9,7 @@ import * as ROLES from '../../constants/roles';
 const SignUpPage = () => (
   <div className={"login-page"}>
     <div className={"form"}>
-      <h1>SignUp</h1>
+      <h1>SIGN UP</h1>
       <SignUpForm />
     </div>
   </div>
