@@ -44,7 +44,7 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-  <nav className={"navbar navbar-light  justify-content-end"}>
+  <nav className={"blue-bar navbar navbar-default navbar-light justify-content-end"}>
     <div id={"nav-bar-item"} className={"nav-item"}>
       <Link style={style.link} to={ROUTES.LANDING}>LANDING</Link>
     </div>
