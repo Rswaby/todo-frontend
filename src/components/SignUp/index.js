@@ -7,9 +7,11 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm />
+  <div className={"login-page"}>
+    <div className={"form"}>
+      <h1>SignUp</h1>
+      <SignUpForm />
+    </div>
   </div>
 );
 
@@ -25,12 +27,12 @@ const INITIAL_STATE = {
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
 
 const ERROR_MSG_ACCOUNT_EXISTS = `
-  An account with this E-Mail address already exists.
-  Try to login with this account instead. If you think the
-  account is already used from one of the social logins, try
-  to sign in with one of them. Afterward, associate your accounts
-  on your personal account page.
-`;
+    An account with this E-Mail address already exists.
+    Try to login with this account instead. If you think the
+    account is already used from one of the social logins, try
+    to sign in with one of them. Afterward, associate your accounts
+    on your personal account page.
+  `;
 
 class SignUpFormBase extends Component {
   constructor(props) {
@@ -89,7 +91,6 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
-      isAdmin,
       error,
     } = this.state;
 
@@ -100,7 +101,7 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className={"register-form"} onSubmit={this.onSubmit}>
         <input
           name="username"
           value={username}
@@ -129,21 +130,13 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <label>
-          Admin:
-          <input
-            name="isAdmin"
-            type="checkbox"
-            checked={isAdmin}
-            onChange={this.onChangeCheckbox}
-          />
-        </label>
         <button disabled={isInvalid} type="submit">
           Sign Up
-        </button>
+            </button>
 
         {error && <p>{error.message}</p>}
       </form>
+
     );
   }
 }

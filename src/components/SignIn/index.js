@@ -8,14 +8,16 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <SignInGoogle />
-    <SignInFacebook />
-    <SignInTwitter />
-    <PasswordForgetLink />
-    <SignUpLink />
+  <div className={"login-page"}>
+    <div className={"form"}>
+      <h1>SignIn</h1>
+      <SignInForm />
+      {/* <SignInGoogle /> */}
+      {/* <SignInFacebook /> */}
+      {/* <SignInTwitter /> */}
+      <PasswordForgetLink />
+      <SignUpLink />
+    </div>
   </div>
 );
 
@@ -68,7 +70,7 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className={"login-form"} onSubmit={this.onSubmit}>
         <input
           name="email"
           value={email}
